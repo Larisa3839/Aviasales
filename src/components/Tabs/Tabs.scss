@@ -1,0 +1,40 @@
+.sort-tabs {
+    width: 500px;
+    height: 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #DFE5EC;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+        cursor: pointer;
+        flex-grow: 1;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 12px;
+
+        &:nth-child(2) {
+            border-left: 1px solid #DFE5EC;
+            border-right: 1px solid #DFE5EC;
+        }
+
+        &:nth-child(1) {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        &:nth-child(3) {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        &:active {
+            background-color: #2196F3;
+            color: #FFFFFF;
+        }
+
+       
+    }
+}
