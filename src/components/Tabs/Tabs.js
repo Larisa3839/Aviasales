@@ -1,13 +1,23 @@
+import { connect } from 'react-redux'
+
+import { setVisibilityTab } from '../../redux/actions'
 import './Tabs.scss'
 
-const Tabs = () => {
-  return (
-    <div className="sort-tabs">
-      <button className="sort-tabs__item">Самый дешевый</button>
-      <button className="sort-tabs__item">Самый быстрый</button>
-      <button className="sort-tabs__item">Оптимальный</button>
-    </div>
-  )
+const Tabs = ({ data, onChangeTab }) => {
+  const tabButtons = data.map((tab) => {
+    return (
+      <button
+        key={tab.id}
+        className={`sort-tabs__item ${tab.isActive ? 'active' : ''}`}
+        onClick={() => onChangeTab(tab.id)}
+      >
+        {tab.text}
+      </button>
+    )
+  })
+  return <div className="sort-tabs">{tabButtons}</div>
 }
 
-export default Tabs
+const mapStateToProps = (store) => ({ data: store.tabsReducer.data })
+const mapDispatchToProps = (dispatch) => ({ onChangeTab: (value) => dispatch(setVisibilityTab(value)) })
+export default connect(mapStateToProps, mapDispatchToProps)(Tabs)

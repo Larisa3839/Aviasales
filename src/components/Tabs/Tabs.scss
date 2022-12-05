@@ -29,12 +29,9 @@
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
-
-        &:active {
-            background-color: #2196F3;
-            color: #FFFFFF;
-        }
-
-       
+    }
+    .active {
+        background-color: #2196F3;
+        color: #FFFFFF;
     }
 }
