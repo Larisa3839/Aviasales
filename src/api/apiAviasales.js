@@ -1,14 +1,18 @@
 import axios from 'axios'
 
-const getTicketsData = async () => {
+const getSearchId = async () => {
+  const res = await axios.get('https://aviasales-test-api.kata.academy/search')
+  return res.data.searchId
+}
+const getTicketsData = async (searchId) => {
   try {
-    const res = await axios.get('https://aviasales-test-api.kata.academy/search')
-    const searchId = res.data.searchId
-    const resTickets = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
-    return resTickets.data.tickets.slice(0, 5)
+    const res = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+    const tickets = res.data
+    return tickets
   } catch (error) {
-    throw new Error(error.message)
+    if (error.response.status === 500) return
+    throw new Error(error)
   }
 }
 
-export default getTicketsData
+export { getTicketsData, getSearchId }

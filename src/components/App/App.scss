@@ -21,7 +21,7 @@
     padding: 0 100px;
     display: flex;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .results {
@@ -33,6 +33,7 @@
     .more {
         padding: 15px 20px;
         background-color: #2196F3;
+        margin-bottom: 20px;
         border-radius: 5px;
         color: #FFFFFF;
         font-weight: 600;
