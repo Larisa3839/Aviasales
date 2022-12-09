@@ -1,19 +1,20 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
-import ReduxThunk from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
 
 import { fetchTickets } from './redux/actions'
-import aviasalesApp from './redux/reducers'
+import * as rootReducer from './redux/reducers'
 import './index.scss'
 import App from './components/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-const store = createStore(
-  aviasalesApp,
-  compose(applyMiddleware(ReduxThunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-)
+
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+})
 store.dispatch(fetchTickets())
 root.render(
   <Provider store={store}>
