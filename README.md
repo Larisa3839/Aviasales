@@ -1,2 +1,2 @@
 # Aviasales
-https://aviasales-app-pied.vercel.app/
+https://aviasales-eosin.vercel.app/
