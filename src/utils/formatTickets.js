@@ -15,11 +15,11 @@ const getTimeOnFly = (date, seconds) => {
   return `${format(new Date(date), 'HH:mm')} - ${format(new Date(result), 'HH:mm')}`
 }
 
-const getBoardingTime = (seconds) => {
-  const hours = (seconds / 3600) ^ 0
-  const minutes = ((seconds - hours * 3600) / 60) ^ 0
+const getBoardingTime = (minutes) => {
+  const hours = (minutes / 60) ^ 0
+  const remainingMinutes = (minutes - hours * 60) ^ 0
   return `${hours === 0 ? '' : hours < 10 ? '0' + hours + 'ч' : hours + 'ч'} ${
-    minutes === 0 ? '' : minutes < 10 ? '0' + minutes + ' м' : minutes + ' м'
+    remainingMinutes === 0 ? '' : remainingMinutes < 10 ? '0' + remainingMinutes + ' м' : remainingMinutes + ' м'
   }`
 }
 
